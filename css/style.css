@@ -11,7 +11,8 @@ h5,
 h6 {
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  /*font-family: "Roboto", sans-serif;*/
+  font-family: Courier, sans-serif;
 }
 
 .clear-fix {
@@ -129,7 +130,8 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  /*background-color: #484848;*/
+  background-color: #999;
 }
 
 .flex-box {
@@ -218,4 +220,11 @@ span {
   .biopic {
     display: block;
   }
+}
+
+#main {
+  margin: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 0 10px teal;
 }
