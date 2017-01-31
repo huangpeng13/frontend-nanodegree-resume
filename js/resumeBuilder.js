@@ -1,8 +1,11 @@
 /*
 This is empty on purpose! Your code to build the resume will go here.
  */
+
+// define the general data placeholder
 var dataPlaceholder = '%data%';
 
+// define the bio data
 var bio = {
     name: 'Peng Hung',
     role: 'Software Engineer',
@@ -16,7 +19,7 @@ var bio = {
     skills: ['ASM', 'C/C++/C#', 'Android', 'PHP', 'Front-End'],
     biopic: 'images/fry.jpg',
     display: function() {
-        $('#topContacts')
+        $('#topContacts, #footerContacts')
             .before(HTMLheaderName.replace(dataPlaceholder, this.name))
             .before(HTMLheaderRole.replace(dataPlaceholder, this.role))
             .append(HTMLmobile.replace(dataPlaceholder, this.contacts.mobile))
@@ -33,6 +36,7 @@ var bio = {
     }
 };
 
+// define the work data
 var work = {
     jobs: [{
             employer: 'Tvia Inc.',
@@ -63,33 +67,37 @@ var work = {
     }
 };
 
+// define the project data
 var projects = {
     projects: [{
             title: 'Sales Management System',
             dates: '2006 - 2007',
             description: 'A web system to manage sales data.',
-            images: ''
+            images: []
         },
         {
             title: 'Android switch for relay controller',
             dates: '2014',
             description: 'Control relay by android app.',
-            images: ''
+            images: []
         }
     ],
     display: function() {
         var $projects = $('#projects');
         this.projects.forEach(function(el) {
-            $(HTMLprojectStart)
+            var $project = $(HTMLprojectStart)
                 .append(HTMLprojectTitle.replace(dataPlaceholder, el.title))
                 .append(HTMLprojectDates.replace(dataPlaceholder, el.dates))
                 .append(HTMLprojectDescription.replace(dataPlaceholder, el.description))
-                .append(el.images || HTMLprojectImage.replace(dataPlaceholder, el.images))
                 .appendTo($projects);
+            el.images.forEach(function(imgUrl) {
+                $project.append(HTMLprojectImage.replace(dataPlaceholder, imgUrl));
+            });
         });
     }
 };
 
+// define the education data
 var education = {
     schools: [{
         name: 'Zhengzhou University',
@@ -128,11 +136,13 @@ var education = {
     }
 };
 
+// display all data
 bio.display();
 work.display();
 projects.display();
 education.display();
 
+// add a map to document
 (function() {
     $('#mapDiv').append(googleMap);
 })();
