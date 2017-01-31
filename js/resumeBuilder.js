@@ -19,16 +19,17 @@ var bio = {
     skills: ['ASM', 'C/C++/C#', 'Android', 'PHP', 'Front-End'],
     biopic: 'images/fry.jpg',
     display: function() {
-        $('#topContacts, #footerContacts')
+        $('#topContacts')
             .before(HTMLheaderName.replace(dataPlaceholder, this.name))
             .before(HTMLheaderRole.replace(dataPlaceholder, this.role))
+            .after(HTMLskillsStart)
+            .after(HTMLwelcomeMsg.replace(dataPlaceholder, this.welcomeMessage))
+            .after(HTMLbioPic.replace(dataPlaceholder, this.biopic));
+        $('#topContacts, #footerContacts')
             .append(HTMLmobile.replace(dataPlaceholder, this.contacts.mobile))
             .append(HTMLemail.replace(dataPlaceholder, this.contacts.email))
             .append(HTMLgithub.replace(dataPlaceholder, this.contacts.github))
             .append(HTMLlocation.replace(dataPlaceholder, this.contacts.location))
-            .after(HTMLskillsStart)
-            .after(HTMLwelcomeMsg.replace(dataPlaceholder, this.welcomeMessage))
-            .after(HTMLbioPic.replace(dataPlaceholder, this.biopic));
         var $skills = $('#skills');
         this.skills.forEach(function(el) {
             $skills.append(HTMLskills.replace(dataPlaceholder, el));
