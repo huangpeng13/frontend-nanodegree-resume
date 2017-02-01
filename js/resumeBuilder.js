@@ -29,7 +29,7 @@ var bio = {
             .append(HTMLmobile.replace(dataPlaceholder, this.contacts.mobile))
             .append(HTMLemail.replace(dataPlaceholder, this.contacts.email))
             .append(HTMLgithub.replace(dataPlaceholder, this.contacts.github))
-            .append(HTMLlocation.replace(dataPlaceholder, this.contacts.location))
+            .append(HTMLlocation.replace(dataPlaceholder, this.contacts.location));
         var $skills = $('#skills');
         this.skills.forEach(function(el) {
             $skills.append(HTMLskills.replace(dataPlaceholder, el));
@@ -44,6 +44,7 @@ var work = {
             title: 'Senior Software Engineer',
             dates: 'September 2001 - June 2003',
             location: 'Hefei China',
+            url: 'http://www.tvia.com',
             description: 'BSP development'
         },
         {
@@ -51,6 +52,7 @@ var work = {
             title: 'Software Engineer',
             dates: 'July 2003 - June 2004',
             location: 'Hefei China',
+            url: 'http://www.mediatek.com',
             description: 'Application development'
         }
     ],
@@ -58,7 +60,7 @@ var work = {
         var $workExperience = $('#workExperience');
         this.jobs.forEach(function(el) {
             $(HTMLworkStart)
-                .append(HTMLworkEmployer.replace(dataPlaceholder, el.employer))
+                .append(HTMLworkEmployer.replace(dataPlaceholder, el.employer).replace('#', el.url))
                 .append(HTMLworkTitle.replace(dataPlaceholder, el.title))
                 .append(HTMLworkDates.replace(dataPlaceholder, el.dates))
                 .append(HTMLworkLocation.replace(dataPlaceholder, el.location))
@@ -74,20 +76,22 @@ var projects = {
             title: 'Sales Management System',
             dates: '2006 - 2007',
             description: 'A web system to manage sales data.',
-            images: []
+            url: 'https://www.google.com',
+            images: [ 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png' ]
         },
         {
             title: 'Android switch for relay controller',
             dates: '2014',
             description: 'Control relay by android app.',
-            images: []
+            url: 'https://www.android.com',
+            images: [ 'https://www.android.com/static/2016/img/logo-android-green_1x.png' ]
         }
     ],
     display: function() {
         var $projects = $('#projects');
         this.projects.forEach(function(el) {
             var $project = $(HTMLprojectStart)
-                .append(HTMLprojectTitle.replace(dataPlaceholder, el.title))
+                .append(HTMLprojectTitle.replace(dataPlaceholder, el.title).replace('#', el.url))
                 .append(HTMLprojectDates.replace(dataPlaceholder, el.dates))
                 .append(HTMLprojectDescription.replace(dataPlaceholder, el.description))
                 .appendTo($projects);
